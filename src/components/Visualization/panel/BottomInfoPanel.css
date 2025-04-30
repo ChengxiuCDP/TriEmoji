@@ -1,0 +1,69 @@
+/* src/components/Visualization/panel/BottomInfoPanel.css */
+/* 控制 Emoji 详细信息面板的样式（显示在侧边栏） */
+
+/* 信息面板容器 */
+.emoji-details {
+  width: 100%;            /* 宽度：100%适应父容器 (侧边栏) */
+  /* margin-top: 1rem; */      /* 外边距由 SidebarControls 的 Paper 控制 */
+  padding: 0; /* 移除内边距，让 Paper 控制 */
+  /* padding: 15px; */         /* 内边距：内容与边框之间的空间 */
+  border: none; /* 移除边框，由 Paper 控制 */
+  /* border: 1px solid #ddd; */ /* 边框：淡灰色细边框 */
+  border-radius: 0; /* 移除圆角，由 Paper 控制 */
+  /* border-radius: 8px; */    /* 边框圆角：圆滑的边角 */
+  background-color: transparent; /* 设置为透明，让 Paper 背景生效 */
+  /* background-color: #f9f9f9; */ /* 背景色：移除浅灰色背景 */
+  box-shadow: none; /* 移除阴影，由 Paper 控制 */
+  /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); */ /* 阴影：轻微的下方阴影 */
+  box-sizing: border-box; /* 盒模型：边框和内边距包含在宽度内 */
+  /* text-align: center; */    /* 文本对齐由内部元素控制 */
+}
+
+/* Emoji 字符预览容器 */
+.emoji-preview {
+  display: flex;           /* 布局：弹性布局 */
+  justify-content: center; /* 水平居中：居中显示Emoji */
+  margin-bottom: 15px;     /* 下边距：与下方文本保持间距 */
+  font-size: 32px;         /* 字体大小：大号Emoji显示 */
+  color: #fff;             /* 确保字符本身是白色 */
+}
+
+/* 所有信息文本行 */
+.emoji-details p {
+  margin: 8px 0;          /* 外边距：上下间距 */
+  font-size: 14px;        /* 字体大小：适中的文本大小 */
+  word-wrap: break-word;  /* 文本换行：允许长单词自动换行 */
+  text-align: left;       /* 文本对齐：左对齐文本内容 */
+  color: #fff;             /* 确保段落文本是白色 */
+}
+
+/* 列名样式（如Name:, Visual Cluster:等） */
+.emoji-details .label {
+  font-weight: bold;      /* 字体粗细：加粗显示 */
+  margin-right: 5px;      /* 右边距：与值之间留出间隔 */
+  color: #ccc; /* 可以用稍暗的白色区分标签 */
+}
+
+/* 位置信息样式 (容器div) */
+.position-info {
+  margin-top: 12px;       /* 上边距：与上方内容分隔 */
+  padding: 8px;           /* 内边距：内容与背景之间的空间 */
+  background-color: rgba(0, 0, 0, 0.2); /* 使用半透明黑色背景 */
+  /* background-color: #f5f5f5; */ /* 移除浅灰色背景 */
+  border-radius: 4px;     /* 边框圆角：圆滑的边角 */
+  font-size: 14px;        /* 字体大小：与其他文本一致 */
+  text-align: left;       /* 文本对齐：左对齐 */
+  color: #fff;             /* 确保内部文本是白色 */
+}
+
+/* 位置信息标签 */
+.position-info .label {
+  font-weight: bold;      /* 字体粗细：加粗显示 */
+   color: #ccc; /* 保持标签颜色一致 */
+}
+
+/* 位置坐标值 */
+.position-info .coords {
+  font-weight: normal;    /* 字体粗细：普通粗细 */
+  color: #fff; /* 确保坐标是白色 */
+} 

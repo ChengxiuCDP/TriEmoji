@@ -1,0 +1,55 @@
+/* src/components/Visualization/ScatterPlotCanvas.css */
+
+/* Container for layered canvas and svg */
+.scatter-plot-container {
+  position: relative; /* Needed for absolute positioning of canvas/svg */
+  width: 800px; /* Match JS dimensions */
+  height: 600px; /* Match JS dimensions */
+  /* Add any other container styles if needed */
+}
+
+/* Canvas element */
+.scatter-plot-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Canvas below SVG */
+  /* pointer-events: none; */ /* Let SVG handle events initially */
+}
+
+/* SVG overlay element */
+.scatter-plot-svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* SVG above Canvas */
+  background-color: transparent; /* Ensure SVG background is clear */
+  pointer-events: all; /* Allow SVG to capture mouse events for zoom/click */
+}
+
+/* Axis styles (remain the same as they are drawn on SVG) */
+.x-axis path,
+.y-axis path,
+.x-axis line,
+.y-axis line {
+  stroke: #bbb;
+  shape-rendering: crispEdges;
+}
+.x-axis text,
+.y-axis text {
+  font-size: 10px;
+  fill: #555;
+}
+.axis-label {
+  font-size: 12px;
+  font-weight: 500;
+  fill: #333;
+}
+
+/* Remove styles for SVG circle, image, similarity-line, similarity-label */
+/* as they are now drawn on Canvas */
+
+/* Tooltip style (if needed, remains the same) */
+.tooltip {
+  /* ... */
+}

@@ -1,0 +1,54 @@
+/* src/components/Visualization/panel/CrossLayerComparisonView.css */
+/* 控制整个可视化页面的顶层布局 */
+
+/* 包含所有面板和可视化区域的主容器 */
+.visualization-container {
+  display: flex; /* 布局方式：Flexbox，用于排列侧边栏和中间区域 */
+  position: relative; /* 定位：相对，作为内部绝对定位元素（如详情面板）的参考 */
+  max-width: 1600px; /* 最大宽度：限制页面内容的最大宽度 */
+  min-height: 700px; /* 最小高度：确保容器有足够的高度 */
+  margin: 20px auto; /* 外边距：上下 20px，左右自动（使容器水平居中） */
+  padding: 20px; /* 内边距：容器边缘与内容的距离 */
+  gap: 20px; /* 子元素间距：侧边栏与中间区域之间的间隔 */
+  box-sizing: border-box; /* 盒模型：让 padding 和 border 包含在 width/height 内 */
+}
+
+/* 中间的可视化区域容器 (包含 2D SVG 或 3D Canvas) */
+.visualization {
+  flex-grow: 1; /* 弹性增长：占据父容器 flex 布局中剩余的空间 */
+  height: 600px; /* 固定高度 */
+  border: 1px solid #ddd; /* 边框：1px 浅灰色实线 */
+  border-radius: 8px; /* 边框圆角 */
+  overflow: hidden; /* 内容溢出：隐藏溢出部分 */
+  position: relative; /* 定位：相对，用于内部可能需要的绝对定位 */
+}
+
+/* 解释按钮 "?" 的样式 */
+.explanation-button {
+  position: fixed; /* 定位：固定，相对于浏览器视口 */
+  bottom: 30px;    /* 距离底部 */
+  right: 30px;     /* 距离右侧 */
+  width: 50px;     /* 宽度 */
+  height: 50px;    /* 高度 */
+  border-radius: 50%; /* 形状：圆形 */
+  background-color: #007bff; /* 背景颜色：蓝色 */
+  color: white;        /* 文字颜色：白色 */
+  border: none;          /* 无边框 */
+  font-size: 24px;     /* 字体大小 */
+  font-weight: bold;   /* 字体粗细 */
+  display: flex;         /* 布局：Flexbox */
+  justify-content: center; /* 水平居中 '?' */
+  align-items: center;   /* 垂直居中 '?' */
+  cursor: pointer;     /* 鼠标样式：手型 */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+  z-index: 900;        /* 层叠顺序：低于模态框，高于页面其他元素 */
+  transition: background-color 0.2s ease, transform 0.1s ease; /* 过渡效果：背景色和形变 */
+}
+
+.explanation-button:hover { /* 鼠标悬停效果 */
+  background-color: #0056b3; /* 背景颜色：深蓝色 */
+}
+
+.explanation-button:active { /* 鼠标点击效果 */
+    transform: scale(0.95); /* 形变：轻微缩小 */
+} 

@@ -1,0 +1,64 @@
+/* src/components/Visualization/Controls/ViewControls.css */
+/* 控制右侧"选择图层"和重置按钮面板的样式 */
+
+/* 右侧面板容器 */
+.right-panel {
+  /* 移除绝对定位，依赖父容器的 Flexbox 布局 */
+  width: 150px;     /* 宽度：稍微加宽以容纳内容 */
+  flex-shrink: 0; /* 防止在 Flex 布局中被压缩 */
+}
+
+/* 面板标题 H3 ("Select Layer") */
+.right-panel h3 {
+  font-size: 18px;    /* 字体大小：调整 */
+  margin-bottom: 15px;/* 底部外边距 */
+  margin-top: 0;      /* 顶部外边距 */
+}
+
+/* 视图切换按钮 (2D/3D) 的容器 */
+.view-toggle {
+  display: flex;            /* 布局：Flexbox */
+  flex-direction: column; /* 方向：垂直排列按钮 */
+  gap: 8px;                 /* 按钮间距：调整 */
+  margin-bottom: 15px;    /* 底部外边距：与重置按钮的间距 */
+}
+
+/* 单个视图切换按钮 (2D/3D) */
+.view-button {
+  padding: 8px 15px;    /* 内边距 */
+  border: 1px solid #ccc; /* 边框 */
+  background-color: #f8f8f8; /* 默认背景色 */
+  cursor: pointer;        /* 鼠标样式：手型 */
+  border-radius: 4px;     /* 边框圆角 */
+  font-size: 14px;        /* 字体大小 */
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; /* 过渡效果 */
+}
+
+.view-button:hover { /* 鼠标悬停效果 */
+  background-color: #eee; /* 背景颜色变浅灰 */
+}
+
+/* 激活状态的视图按钮 (通过 JS 添加 'active' 类) */
+.view-button.active {
+  background-color: #007bff; /* 背景颜色：蓝色 */
+  color: white;            /* 文字颜色：白色 */
+  border-color: #0056b3;   /* 边框颜色：深蓝色 */
+  font-weight: bold;        /* 字体加粗 */
+}
+
+/* "Reset All Pairs" 按钮 */
+.reset-button {
+  padding: 8px 15px;    /* 内边距 */
+  background-color: #dc3545; /* 背景颜色：红色 */
+  color: white;            /* 文字颜色：白色 */
+  border: none;             /* 无边框 */
+  border-radius: 4px;     /* 边框圆角 */
+  cursor: pointer;        /* 鼠标样式：手型 */
+  font-size: 14px;        /* 字体大小 */
+  width: 100%;            /* 宽度：占满父容器 (.right-panel) */
+  transition: background-color 0.2s ease; /* 过渡效果 */
+}
+
+.reset-button:hover { /* 鼠标悬停效果 */
+  background-color: #c82333; /* 背景颜色：深红色 */
+} 

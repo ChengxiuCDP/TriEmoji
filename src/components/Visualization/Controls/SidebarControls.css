@@ -1,0 +1,46 @@
+/* src/components/Visualization/Controls/SidebarControls.css */
+/* 控制左侧"选择聚类"面板的样式 */
+
+/* 左侧面板容器 */
+.left-panel {
+  /* 移除绝对定位，依赖父容器的 Flexbox 布局 */
+  width: 200px;     /* 固定宽度 */
+  flex-shrink: 0; /* 防止在 Flex 布局中被压缩 */
+}
+
+/* 面板标题 H2 ("Select Cluster") */
+.left-panel h2 {
+  font-size: 18px;    /* 字体大小：调整 */
+  margin-bottom: 15px;/* 底部外边距 */
+  margin-top: 0;      /* 顶部外边距 */
+}
+
+/* 聚类按钮的容器 */
+.cluster-buttons {
+  display: flex;            /* 布局：Flexbox */
+  flex-direction: column; /* 方向：垂直排列按钮 */
+  gap: 8px;                 /* 按钮间距：调整 */
+}
+
+/* 单个聚类按钮样式 */
+.cluster-button {
+  padding: 8px 12px;    /* 内边距 */
+  border: 1px solid #ccc; /* 边框 */
+  background-color: #eee; /* 默认背景颜色 */
+  cursor: pointer;        /* 鼠标样式：手型 */
+  border-radius: 4px;     /* 边框圆角 */
+  text-align: left;       /* 文字左对齐 */
+  font-size: 14px;        /* 字体大小 */
+  transition: background-color 0.2s ease; /* 过渡效果：背景色 */
+}
+
+.cluster-button:hover { /* 鼠标悬停效果 */
+  background-color: #ddd; /* 背景颜色变深 */
+}
+
+/* 激活状态按钮样式 (通过 JS 添加 'active' 类) */
+.cluster-button.active {
+   font-weight: bold;    /* 字体加粗 */
+   border-color: #aaa;   /* 边框颜色变深 */
+   /* 激活时的背景颜色通过组件内的 inline style 设置 */
+} 
