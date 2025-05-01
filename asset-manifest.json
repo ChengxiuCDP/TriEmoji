@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TriEmoji/static/css/main.38327dc3.css",
+    "main.js": "/TriEmoji/static/js/main.d5287b6b.js",
+    "static/js/453.70d01fcc.chunk.js": "/TriEmoji/static/js/453.70d01fcc.chunk.js",
+    "index.html": "/TriEmoji/index.html",
+    "main.38327dc3.css.map": "/TriEmoji/static/css/main.38327dc3.css.map",
+    "main.d5287b6b.js.map": "/TriEmoji/static/js/main.d5287b6b.js.map",
+    "453.70d01fcc.chunk.js.map": "/TriEmoji/static/js/453.70d01fcc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.38327dc3.css",
+    "static/js/main.d5287b6b.js"
+  ]
+}
