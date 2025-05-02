@@ -5,6 +5,7 @@ import Box from '@mui/material/Box'; // Import Box from Material UI
 import CrossLayerComparisonView from './components/Visualization/panel/CrossLayerComparisonView';
 import Navbar from './components/common/Navbar';
 import ScrollamaNarrative from './components/ScrollamaNarrative'; // Import the new component
+import IntroductionSplash from './components/common/IntroductionSplash'; // Import the splash screen
 import { processEmojiNetCsvData } from './data/processData'; // Import data processing function
 import debounce from 'lodash.debounce'; // Import debounce
 import './App.css';
@@ -17,6 +18,7 @@ import Button from '@mui/material/Button'; // Import MUI Button
 function App() {
   const [view, setView] = useState('Visual');
   const [tourActive, setTourActive] = useState(false); // State to control tour mode
+  const [isIntroductionVisible, setIsIntroductionVisible] = useState(true); // State for splash screen
   const [searchQuery, setSearchQuery] = useState(''); // Add search query state
   const [allEmojiData, setAllEmojiData] = useState([]);
   const [filteredEmojiData, setFilteredEmojiData] = useState([]);
@@ -101,6 +103,10 @@ function App() {
     // setFilteredEmojiData(allEmojiData);
   };
 
+  const handleStartExploring = () => { // Handler for the splash screen button
+    setIsIntroductionVisible(false);
+  };
+
   // Debounced search function - Wrap the inner function directly
   const debouncedSearch = useCallback(
     debounce((query) => {
@@ -163,33 +169,6 @@ function App() {
     // e.g., visualClusterData, semanticClusterData, etc., if not derived from emojiData
   }), [view, filteredEmojiData, loading]);
 
-  // Define tour steps
-  // 暂时注释掉tour步骤定义
-  /*
-  const tourSteps = [
-    {
-      selector: '.tour-navbar',
-      content: 'This is the navigation bar where you can switch views and search for emojis.',
-    },
-    {
-      selector: '.tour-view-buttons',
-      content: 'These buttons allow you to switch between different visualization views.',
-    },
-    {
-      selector: '.tour-search',
-      content: 'Search for emojis by name, shortcode, or keywords.',
-    },
-    {
-      selector: '.tour-visualization',
-      content: 'This is the main visualization area. Explore emojis in different representations. Click on an emoji to see more details.',
-    },
-    {
-      selector: '.tour-emoji-details',
-      content: 'When you select an emoji, this panel shows details about it, including its name, character, and other metadata.',
-    },
-  ];
-  */
-
   // Dark theme
   const darkTheme = createTheme({
     palette: {
@@ -210,50 +189,54 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline /> {/* Normalize CSS */}
-      <Box className="App" sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}> 
-        <div className="tour-navbar">
-          <Navbar 
-            currentView={view} 
-            onViewChange={handleViewChange} 
-            onStartTour={handleStartTour} 
-            searchQuery={searchQuery}
-            onSearchChange={handleSearchChange}
-            searchResultCount={filteredEmojiData.length}
+      {isIntroductionVisible ? (
+        <IntroductionSplash onStartExploring={handleStartExploring} />
+      ) : (
+        <Box className="App" sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}> 
+          <div className="tour-navbar">
+            <Navbar 
+              currentView={view} 
+              onViewChange={handleViewChange} 
+              onStartTour={handleStartTour} 
+              searchQuery={searchQuery}
+              onSearchChange={handleSearchChange}
+              searchResultCount={filteredEmojiData.length}
+            />
+          </div>
+          {/* Conditionally render Tour or Main View */}
+          {tourActive ? (
+            <ScrollamaNarrative onExit={handleExitTour} />
+          ) : (
+            // Pass memoized props and loading state
+            loading ? (
+               <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexGrow: 1 }}>
+                 Loading data...
+               </Box>
+             ) : (
+               <CrossLayerComparisonView {...crossLayerProps} />
+             )
+          )}
+          {/* 暂时注释掉Tour组件
+          <Tour
+            steps={tourSteps}
+            isOpen={tourActive}
+            onRequestClose={handleExitTour}
+            closeWithMask={false}
+            rounded={8}
+            accentColor="#0d6efd"
+            lastStepNextButton={
+              <Button 
+                variant="contained" 
+                color="primary"
+                size="small"
+              >
+                Finish Tour
+              </Button>
+            }
           />
-        </div>
-        {/* Conditionally render Tour or Main View */}
-        {tourActive ? (
-          <ScrollamaNarrative onExit={handleExitTour} />
-        ) : (
-          // Pass memoized props and loading state
-          loading ? (
-             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexGrow: 1 }}>
-               Loading data...
-             </Box>
-           ) : (
-             <CrossLayerComparisonView {...crossLayerProps} />
-           )
-        )}
-        {/* 暂时注释掉Tour组件
-        <Tour
-          steps={tourSteps}
-          isOpen={tourActive}
-          onRequestClose={handleExitTour}
-          closeWithMask={false}
-          rounded={8}
-          accentColor="#0d6efd"
-          lastStepNextButton={
-            <Button 
-              variant="contained" 
-              color="primary"
-              size="small"
-            >
-              Finish Tour
-            </Button>
-          }
-        />
-        */}
-      </Box>
+          */}
+        </Box>
+      )}
     </ThemeProvider>
   );
 }
